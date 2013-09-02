@@ -1,0 +1,44 @@
+{
+	"default_module": "powerline.segments.common",
+	"segment_data": {
+		"uptime": {
+			"before": "⇑  "
+		},
+		"external_ip": {
+			"before": "ⓦ  "
+		},
+		"email_imap_alert": {
+			"before": "✉ ",
+			"args": {
+				"username": "",
+				"password": ""
+			}
+		},
+        "branch": {
+            "before": " "
+        }
+	},
+	"segments": {
+		"right": [
+            {
+                "name": "branch",
+                "args": {
+                    "status_colors": true
+                }
+            },
+			{
+				"name": "date",
+				"args": {
+					"format": "%Y-%m-%d-%H:%M",
+					"istime": true
+				}
+			},
+			{
+				"name": "hostname",
+                "args": {
+                    "exclude_domain" : true
+                }
+			}
+		]
+	}
+}
