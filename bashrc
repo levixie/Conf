@@ -25,16 +25,11 @@ if [[ -n "$TMUX" ]]; then
     UNDERLINE=$(tput smul)
 
     __prompt() {
-        [[ -z "$_OLD_PROMPT_COMMAND" ]] ||
-            eval $_OLD_PROMPT_COMMAND
-
         export PS1="${LIME_YELLOW}[\\w]$ ${NORMAL}"
         tmux setenv -g TMUX_PWD_$(tmux display -p "#D" | tr -d %) "$PWD"
         tmux refresh -S
     }
 
-    [[ "$PROMPT_COMMAND" == "__prompt" ]] ||
-        _OLD_PROMPT_COMMAND="$PROMPT_COMMAND"
     export PROMPT_COMMAND="__prompt"
 else
     . ~/.config/powerline/bindings/bash/powerline.sh
