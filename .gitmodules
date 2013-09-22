@@ -1,0 +1,3 @@
+[submodule "vim/bundle/ShowMarks"]
+	path = vim/bundle/ShowMarks
+	url = https://github.com/vim-scripts/ShowMarks.git
