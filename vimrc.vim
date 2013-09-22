@@ -1,3 +1,30 @@
+if has("python")
+python << ENDPYTHON
+import sys
+sys.path = [
+    '', 
+    '/usr/local/bin', 
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pip-1.4.1-py2.7.egg', 
+    '/Users/jesse/houzz/c2/python', 
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python27.zip', 
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7', 
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin', 
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac',
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages',
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk',
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-old',
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload', 
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL',
+    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/setuptools-1.0-py2.7.egg',
+    '/Library/Python/2.7/site-packages', 
+    '/usr/local/lib/python2.7/site-packages',
+    '/usr/local/lib/python2.7/site-packages/IPython/extensions'
+ ]
+import site
+ENDPYTHON
+endif
+
+execute pathogen#infect()
 set nocompatible
 
 set number
@@ -10,6 +37,7 @@ syntax on
 
 
 autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab!
+autocmd FileType python compiler pylint
 
 set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
@@ -25,6 +53,7 @@ set incsearch
 "colorscheme darkblue
 "colorscheme koehler
 let g:solarized_termtrans = 1
+let g:solarized_termcolors=256
 colorscheme solarized
 set background=dark
 set noshowmode
@@ -42,30 +71,43 @@ nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
 "source $VIMRUNTIME/mswin.vim
 "behave mswin
 
-set diffexpr=MyDiff()
-function MyDiff()
-  let opt = '-a --binary '
-  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
-  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
-  let arg1 = v:fname_in
-  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
-  let arg2 = v:fname_new
-  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
-  let arg3 = v:fname_out
-  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
-  let eq = ''
-  if $VIMRUNTIME =~ ' '
-    if &sh =~ '\<cmd'
-      let cmd = '""' . $VIMRUNTIME . '\diff"'
-      let eq = '"'
-    else
-      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
-    endif
-  else
-    let cmd = $VIMRUNTIME . '\diff'
-  endif
-  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
-endfunction
+"set diffexpr=MyDiff()
+"function MyDiff()
+"  let opt = '-a --binary '
+"  if &diffopt =~ 'icase' | let opt = opt . '-i ' | endif
+"  if &diffopt =~ 'iwhite' | let opt = opt . '-b ' | endif
+"  let arg1 = v:fname_in
+"  if arg1 =~ ' ' | let arg1 = '"' . arg1 . '"' | endif
+"  let arg2 = v:fname_new
+"  if arg2 =~ ' ' | let arg2 = '"' . arg2 . '"' | endif
+"  let arg3 = v:fname_out
+"  if arg3 =~ ' ' | let arg3 = '"' . arg3 . '"' | endif
+"  let eq = ''
+"  if $VIMRUNTIME =~ ' '
+"    if &sh =~ '\<cmd'
+"      let cmd = '""' . $VIMRUNTIME . '\diff"'
+"      let eq = '"'
+"    else
+"      let cmd = substitute($VIMRUNTIME, ' ', '" ', '') . '\diff"'
+"    endif
+"  else
+"    let cmd = $VIMRUNTIME . '\diff'
+"  endif
+"  silent execute '!' . cmd . ' ' . opt . arg1 . ' ' . arg2 . ' > ' . arg3 . eq
+"endfunction
+
+"""""""""""""""""""""""""""""
+" jedi & pylint
+""""""""""""""""""""""""""""
+let g:pylint_onwrite = 0
+
+"let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 0
+let g:jedi#use_tabs_not_buffers = 0
+let g:jedi#use_splits_not_buffers = "bottom"
+set splitbelow
+autocmd FileType python setlocal completeopt
+"-=preview
 
 """"""""""""""""""""""""""""""
 " airline
@@ -174,7 +216,7 @@ endif
 " showmarks setting
 """"""""""""""""""""""""""""""
 " Enable ShowMarks
-" let showmarks_enable = 1
+let showmarks_enable = 1
 " Show which marks
 let showmarks_include ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
 " Ignore help, quickfix, non-modifiable buffers
@@ -182,7 +224,11 @@ let showmarks_ignore_type = "hqm"
 " Hilight lower & upper marks
 let showmarks_hlline_lower = 1
 let showmarks_hlline_upper = 1 
-
+hi ShowMarksHLl ctermfg=0 ctermbg=14 guifg=Black guibg=#8CCBEA  
+hi ShowMarksHLu ctermfg=0 ctermbg=10 guifg=Black guibg=#A4E57E  
+hi ShowMarksHLo ctermfg=0 ctermbg=11 guifg=Black guibg=#FFDB72  
+hi ShowMarksHLm ctermfg=0 ctermbg=9 guifg=Black guibg=#FF7272   
+hi ShowMarksHLla ctermfg=0 ctermbg=13 guifg=Black guibg=#FFB3FF
 
 """"""""""""""""""""""""""""""
 " markbrowser setting
