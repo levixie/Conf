@@ -1,3 +1,6 @@
 [submodule "vim/bundle/ShowMarks"]
 	path = vim/bundle/ShowMarks
 	url = https://github.com/vim-scripts/ShowMarks.git
+[submodule "vim/bundle/SuperTab"]
+	path = vim/bundle/SuperTab
+	url = https://github.com/vim-scripts/SuperTab.git
