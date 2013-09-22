@@ -1,4 +1,4 @@
-export PATH="~/houzz/arcanist/bin:/usr/local/bin:$PATH"
+export PATH="/usr/local/opt/ruby/bin:~/houzz/arcanist/bin:/usr/local/bin:$PATH"
 alias ll="ls -Gl"
 alias lc="ls -G"
 alias go="pushd"
@@ -34,3 +34,5 @@ if [[ -n "$TMUX" ]]; then
 else
     . ~/.config/powerline/bindings/bash/powerline.sh
 fi
+
+source ~/.config/tmuxinator/tmuxinator.bash
