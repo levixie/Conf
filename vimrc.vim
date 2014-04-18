@@ -38,6 +38,7 @@ syntax on
 
 autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab!
 autocmd FileType python compiler pylint
+"autocmd FileType javascript call JavaScriptFold()
 
 set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8

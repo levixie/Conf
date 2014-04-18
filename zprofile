@@ -3,9 +3,15 @@ alias ll="ls -Gl"
 alias lc="ls -G"
 alias go="pushd"
 alias back="popd"
+alias gil="git pull"
+alias gip="git push"
+alias gis="git status"
+alias gic="git commit"
+alias gia="git add"
+alias gif="git difftool"
 # alias for quick DNS cache flushing
 alias fc='sudo dscacheutil -flushcache'
-alias tn='sudo autossh -M 0 -f jesse@hbas.houzz.net -L 80:stweb02:80 -L 81:stweb02:81 -L 8080:stweb01:80 -N -i /Users/jesse/.ssh/hbas_rsa'
+alias tn='autossh -M 2270:7000 -f jesse@stg.houzz.net -L 21000:hdws01:21000 -L 1234:hdws02:8580 -L 8676:hdws01:3128 -L 21050:hdws01:21050 -qnN'
 
 bindkey -v
 bindkey '^R' history-incremental-search-backward
