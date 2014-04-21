@@ -1,0 +1,32 @@
+# ~/.tmuxinator/work.yml
+
+name: work
+root: ~/houzz/c2
+tmux_options: -2
+
+# Optional tmux socket
+# socket_name: foo
+
+# Runs before everything. Use it to start daemons etc.
+# pre: sudo /etc/rc.d/mysqld start
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+# pre_window: rbenv shell 2.0.0-p247
+
+# Pass command line options to tmux. Useful for specifying a different tmux.conf.
+# tmux_options: -f ~/.tmux.mac.conf
+
+windows:
+  - c2: 
+  - c2products: go ~/houzz/c2products
+  - log/sql:
+      layout: tiled
+      panes:
+        - cd log 
+        - mysql -uroot c2 
+        - cd log
+        - cd log
+  - git: git status
+  - c2ubuntu: go ~/houzz/c2ubuntu
+#  - PROD: ssh tmux.hz
+#  - STG: ssh stg.houzz.net
