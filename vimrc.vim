@@ -33,12 +33,20 @@ set tabstop=4
 
 set expandtab
 set shiftwidth=4
+
+filetype plugin on
+
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
 syntax on
 
 
 autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab!
 autocmd FileType python compiler pylint
 "autocmd FileType javascript call JavaScriptFold()
+autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
 set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
