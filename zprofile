@@ -1,4 +1,6 @@
-export GOROOT="/usr/local/Cellar/go/1.2.1/libexec"
+export EDITOR=vim
+export GOROOT="/usr/local/Cellar/go/1.3/libexec"
+export GOPATH="/Users/jesse/my/go"
 export PATH="/usr/local/opt/ruby/bin:/Users/jesse/houzz/arcanist/bin:/usr/local/bin:$PATH"
 alias ll="ls -Gl"
 alias lc="ls -G"
@@ -17,4 +19,9 @@ bindkey '^R' history-incremental-search-backward
 
 if [ -f ~/.config/zshrc ]; then 
     source ~/.config/zshrc 
+fi
+
+# if the current symlink still works then dont update it
+if [ -S "$SSH_AUTH_SOCK" -a ! -S ~/.ssh/ssh_auth_sock ]; then
+   ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
 fi

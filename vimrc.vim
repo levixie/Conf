@@ -39,14 +39,38 @@ filetype plugin on
 filetype off
 filetype plugin indent off
 set runtimepath+=$GOROOT/misc/vim
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" The following are examples of different formats supported.
+" Keep Plugin commands between vundle#begin/end.
+" plugin on GitHub repo
+Plugin 'tpope/vim-fugitive'
+
+Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'git@github.com:nvie/vim-flake8.git'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
 filetype plugin indent on
 syntax on
 
 
 autocmd FileType php set tabstop=4|set shiftwidth=4|set expandtab!
-autocmd FileType python compiler pylint
+
+"autocmd FileType python compiler pylint
 "autocmd FileType javascript call JavaScriptFold()
 autocmd FileType go autocmd BufWritePre <buffer> Fmt
+autocmd BufWritePost *.py call Flake8()
 
 set fileencodings=utf-8,gb2312,gbk,gb18030
 set termencoding=utf-8
@@ -74,6 +98,24 @@ set hlsearch
 map <C-\> :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 map <A-]> :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
+
+""""""""""""""""""""""""""""""""
+" vim-flake8
+"""""""""""""""""""""""""""""""
+let g:flake8_show_in_file = 1
+let g:flake8_show_in_gutter = 1
+highlight link Flake8_Error      Error
+highlight link Flake8_Warning    WarningMsg
+highlight link Flake8_Complexity WarningMsg
+highlight link Flake8_Naming     WarningMsg
+highlight link Flake8_PyFlake    WarningMsg
+
+"""""""""""""""""""""""""""""""""
+" YouCompleteMe
+""""""""""""""""""""""""""""""""
+"let g:ycm_min_num_of_chars_for_completion = 99 
+"let g:ycm_auto_trigger = 1
+
 
 
 "source $VIMRUNTIME/vimrc_example.vim
@@ -108,7 +150,8 @@ nmap <leader>lv :lv /<c-r>=expand("<cword>")<cr>/ %<cr>:lw<cr>
 """""""""""""""""""""""""""""
 " jedi & pylint
 """"""""""""""""""""""""""""
-let g:pylint_onwrite = 0
+let g:pylint_onwrite = 0 
+let g:pylint_show_rate = 0
 
 "let g:jedi#popup_on_dot = 0
 let g:jedi#show_call_signatures = 0

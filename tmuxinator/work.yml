@@ -18,7 +18,7 @@ tmux_options: -2
 
 windows:
   - c2: 
-  - c2products: go ~/houzz/c2products
+  - c2products: pushd ~/houzz/c2products
   - log/sql:
       layout: tiled
       panes:
@@ -26,7 +26,7 @@ windows:
         - mysql -uroot c2 
         - cd log
         - cd log
-  - git: git status
-  - c2ubuntu: go ~/houzz/c2ubuntu
+  - git: pushd ~/houzz/c2_release
+  - c2ubuntu: pushd ~/houzz/c2ubuntu
 #  - PROD: ssh tmux.hz
 #  - STG: ssh stg.houzz.net
