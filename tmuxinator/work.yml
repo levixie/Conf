@@ -26,7 +26,7 @@ windows:
         - mysql -uroot c2 
         - cd log
         - cd log
-  - git: pushd ~/houzz/c2_release
+  - c2infra: pushd ~/houzz/c2infra
   - c2ubuntu: pushd ~/houzz/c2ubuntu
 #  - PROD: ssh tmux.hz
 #  - STG: ssh stg.houzz.net
