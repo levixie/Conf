@@ -1,5 +1,5 @@
 export EDITOR=vim
-export GOROOT="/usr/local/Cellar/go/1.3/libexec"
+export GOROOT="/usr/local/Cellar/go/1.4/libexec"
 export GOPATH="/Users/jesse/my/go"
 export PATH="/usr/local/opt/ruby/bin:/Users/jesse/houzz/arcanist/bin:/usr/local/bin:$PATH"
 alias ll="ls -Gl"

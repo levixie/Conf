@@ -1,11 +1,2 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =9
-let g:netrw_dirhist_1='/Users/jesse/houzz/c2/python/tools'
-let g:netrw_dirhist_2='/Users/jesse/houzz/c2/python/tools/newsletter'
-let g:netrw_dirhist_3='/Users/jesse/Library/Application Support/NotificationCenter'
-let g:netrw_dirhist_4='/Users/jesse/houzz/c2/python'
-let g:netrw_dirhist_5='/Users/jesse/houzz/c2/python/utils'
-let g:netrw_dirhist_6='/Users/jesse/houzz/c2/python'
-let g:netrw_dirhist_7='/Users/jesse/houzz/c2/python/daemons'
-let g:netrw_dirhist_8='/Users/jesse/houzz/c2/python'
-let g:netrw_dirhist_9='/Users/jesse/houzz/c2/python/utils'
+let g:netrw_dirhist_cnt =0

@@ -1,28 +1,28 @@
-if has("python")
-python << ENDPYTHON
-import sys
-sys.path = [
-    '', 
-    '/usr/local/bin', 
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pip-1.4.1-py2.7.egg', 
-    '/Users/jesse/houzz/c2/python', 
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python27.zip', 
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7', 
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin', 
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac',
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages',
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk',
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-old',
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload', 
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL',
-    '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/setuptools-1.0-py2.7.egg',
-    '/Library/Python/2.7/site-packages', 
-    '/usr/local/lib/python2.7/site-packages',
-    '/usr/local/lib/python2.7/site-packages/IPython/extensions'
- ]
-import site
-ENDPYTHON
-endif
+" if has("python")
+" python << ENDPYTHON
+" import sys
+" sys.path = [
+"     '', 
+"     '/usr/local/bin', 
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/pip-1.4.1-py2.7.egg', 
+"     '/Users/jesse/houzz/c2/python', 
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python27.zip', 
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7', 
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-darwin', 
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac',
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/plat-mac/lib-scriptpackages',
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-tk',
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-old',
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/lib-dynload', 
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/PIL',
+"     '/usr/local/Cellar/python/2.7.5/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/setuptools-1.0-py2.7.egg',
+"     '/Library/Python/2.7/site-packages', 
+"     '/usr/local/lib/python2.7/site-packages',
+"     '/usr/local/lib/python2.7/site-packages/IPython/extensions'
+"  ]
+" import site
+" ENDPYTHON
+" endif
 
 execute pathogen#infect()
 set nocompatible
